@@ -73,6 +73,20 @@ Route::group(array('prefix'=>'papers'), function () {
     Route::post("/update","QPaperGeneratorController@update");
 });
 
+Route::group(array('prefix'=>'users'),function(){
+    Route::get("/","UsersController@index");
+    Route::get("/add","UsersController@add");
+   
+    Route::get("edit/{id}","UsersController@edit");
+    Route::get("/delete/{id}","UsersController@delete");
+
+    Route::get("assign/{id}","UsersController@assignRole");
+
+    Route::post("/store","UsersController@store");
+    Route::post("/update","UsersController@update");
+    Route::post("/update/role","UsersController@updateRole");
+});
+
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
  // Registration Routes...
  Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

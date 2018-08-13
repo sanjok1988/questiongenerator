@@ -87,7 +87,7 @@
                     <a href="">Ankit Sharma</a>
                     <a href="">Osaka Thapa</a>
                     <a href="">Anil Kumar Mahato</a>
-                    <a href="">Sabin </a>
+                    <a href="">Sabin Prasad Singh</a>
                     <a href="">Prithivi Chandra Nakarmi</a>
                 </div>
             </div>

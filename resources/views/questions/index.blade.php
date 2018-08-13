@@ -22,7 +22,7 @@
                   <th>Difficulty Level</th>
                   <th>Marks</th>
                   <th>Subject</th>
-                  <th>Action</th>
+                 <!--<th>Action</th>-->
                 
                 </tr>
                 </thead>
@@ -36,8 +36,8 @@
                   <td>{{$data->mark}}</td>
                   <td>{{$data->name}}</td>
                   <td>
-                  <a class="btn btn-primary btn-sm" title="Edit" href="questions/edit/<?php echo $data->id;?>" ><i class="fa fa-pencil"></i></a>
-							    <a title="Delete" class="btn btn-danger btn-sm" href="questions/delete/<?php echo $data->id;?>"><i class="fa fa-trash-o"></i></a>
+                  <!-- <a class="btn btn-primary btn-sm" title="Edit" href="questions/edit/<?php echo $data->id;?>" ><i class="fa fa-pencil"></i></a>
+							    <a title="Delete" class="btn btn-danger btn-sm" href="questions/delete/<?php echo $data->id;?>"><i class="fa fa-trash-o"></i></a> -->
                </td>
                   
                 </tr>

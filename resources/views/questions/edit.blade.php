@@ -16,6 +16,7 @@
                         <span>{!! implode('', $errors->all('<i style="color:red">:message</i>')) !!}</span>
                     @endif
                 </h3>
+                <a class="btn btn-sm btn-success" href="{{ url('questions') }}">View List</a>  
                 <a onclick="goBack()" class="pull-right"><< Go Back</a>
             </div>
             <!-- /.box-header -->
@@ -41,10 +42,11 @@
                 </div>
                 <div class="form-group">
                 <label>Difficulty Level</label><br>
-                  <input type="radio" name="diff_level" value="easy" <?php if(old('diff_level', $question->diff_level)=="easy") echo 'checked="checked"';?>> Easy<br>
-                  <input type="radio" name="diff_level" value="normal" <?php if(old('diff_level', $question->diff_level)=="normal") echo 'checked="checked"';?>> Normal<br>
-                  <input type="radio" name="diff_level" value="difficult" <?php if(old('diff_level', $question->diff_level)=="difficult") echo 'checked="checked"';?>> Difficult
-                </div>
+                <?php 
+                  for($i=1; $i<=6; $i++){?>                  
+                  <input type="radio" name="diff_level" value="{{$i}}" <?php if(old('diff_level', $question->diff_level)==$i) echo 'checked="checked"';?>> {{$i}}<br>
+                  <?php }?>
+                  </div>
                 <div class="form-group">
                   <label>Mark Assigned</label>
                   <input type="text" class="form-control" name="mark" placeholder="mark" value="{{old('mark', $question->mark)}}" >

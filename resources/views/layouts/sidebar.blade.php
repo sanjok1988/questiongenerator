@@ -21,7 +21,28 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-       
+        <li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>Subjects</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ url('subjects') }}">View List</a></li>
+              <li><a href="{{ url('subjects/add') }}">Add New</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+              <a href="#"><i class="fa fa-link"></i> <span>Questions</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{ url('questions') }}">View List</a></li>
+                <li><a href="{{ url('questions/add') }}">Add New</a></li>
+              </ul>
+            </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Exams</span>
             <span class="pull-right-container">
@@ -33,28 +54,8 @@
             <li><a href="{{ url('exams/add') }}">Add New</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Questions</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ url('questions') }}">View List</a></li>
-            <li><a href="{{ url('questions/add') }}">Add New</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Subjects</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ url('subjects') }}">View List</a></li>
-            <li><a href="{{ url('subjects/add') }}">Add New</a></li>
-          </ul>
-        </li>
+        
+       
 
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Papers</span>
@@ -67,7 +68,9 @@
             {{--  <li><a href="{{ url('papers/add/questions') }}">Add Questions To Paper</a></li>  --}}
           </ul>
         </li>
-      
+   
+        
+  
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Users</span>
             <span class="pull-right-container">
@@ -76,9 +79,10 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('users') }}">View List</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
+            
           </ul>
         </li>
+       
       </ul>
       <!-- /.sidebar-menu -->
     </section>

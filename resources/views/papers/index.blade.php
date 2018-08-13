@@ -10,7 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Questions</h3>
-              <a class="btn btn-success btn-sm pull-right" title="Create New" href="questions/add" ><i class="fa fa-plus"></i> Create New</a>
+              <a class="btn btn-success btn-sm pull-right" title="Create New" href="questions/add" ><i class="fa fa-plus"></i> Create New Question</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

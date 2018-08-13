@@ -10,7 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Add Questions To Exams</h3>
-              <a class="btn btn-success btn-sm pull-right" title="Create New" href="exams/add" ><i class="fa fa-plus"></i> Create New</a>
+              <a class="btn btn-success btn-sm pull-right" title="Create New" href="exams/add" ><i class="fa fa-plus"></i> Create New Exam</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -37,7 +37,7 @@
                   <td>{{$data->date}}</td>
                 
                   <td>
-                  <a class="btn btn-warning btn-sm" title="Add Questions" href="papers/add?id={{ $data->eid }}&sid={{$data->sid}}"><i class="fa fa-question"></i></a>
+                  <a class="btn btn-warning btn-sm" title="Add Questions" href="papers/add?id={{ $data->eid }}&sid={{$data->sid}}"><i class="fa fa-question"></i> <i class="fa fa-plus"></i></a>
                   <a class="btn btn-success btn-sm" title="View Questions" href="papers/view?id={{ $data->eid }}&sid={{$data->sid}}"><i class="fa fa-eye"></i></a>		
                   <a class="btn btn-primary btn-sm" title="Generate Paper" href="papers/export/{{  $data->eid }}/{{$data->sid}}/{{$data->semester}}" ><i class="fa fa-file"></i></a>						    
                </td>

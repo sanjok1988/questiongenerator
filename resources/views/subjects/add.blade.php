@@ -11,12 +11,14 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
+                
             <a onclick="goBack()" class="pull-right"><< Go Back</a>
                 <h3 class="box-title">Subjects
                     @if ($errors->any())
                         <span>{!! implode('', $errors->all('<i style="color:red">:message</i>')) !!}</span>
                     @endif
                 </h3>
+                <a class="btn btn-sm btn-success" href="{{ url('subjects') }}">View List</a>
                             
             </div>
             <!-- /.box-header -->

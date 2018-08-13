@@ -10,6 +10,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Subjects</h3>
+              
               <a class="btn btn-success btn-sm pull-right" title="Create New" href="subjects/add" ><i class="fa fa-plus"></i> Create New</a>
             </div>
             <!-- /.box-header -->

@@ -11,6 +11,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
+                <a class="btn btn-sm btn-success" href="{{ url('exams') }}">View List</a> 
             <a onclick="goBack()" class="pull-right"><< Go Back</a>
                 <h3 class="box-title">Exams::Edit
                     @if ($errors->any())

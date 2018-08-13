@@ -11,13 +11,14 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
+                <a class="btn btn-sm btn-success" href="{{ url('exams') }}">View List</a>      
             <a onclick="goBack()" class="pull-right"><< Go Back</a>
                 <h3 class="box-title">exams
                     @if ($errors->any())
                         <span>{!! implode('', $errors->all('<i style="color:red">:message</i>')) !!}</span>
                     @endif
                 </h3>
-                            
+                       
             </div>
             <!-- /.box-header -->
             <!-- form start -->

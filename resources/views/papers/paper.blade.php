@@ -18,14 +18,14 @@
 <h1>UCSI</h1>
     <h4><u>UNIVERSITY</u></h4>
 <h3>FACULTY OF BUSINESS AND INIFORMATION CENTER</h3>
-  @foreach($examDetails as $e)
-  <h3>{{$e->exam_type }}</h3>
-  <h3>Course Code And Name: {{$e->code}}{{ " ".$subject}}</h3>
-  <H3>Semester : {{$semester}}</H3>
-  <h5>Full Mark: {{$e->fm}}</h5>
-  <h5>Pass Mark: {{$e->pm}}</h5>
-  <h5>Exam Date: {{$e->date}}</h5>
-  @endforeach
+  
+  <h3>{{$examDetails->exam_type }}</h3>
+  <h3>Course Code And Name: {{ $course_code }}{{ " ".$subject}}</h3>
+  <H3>Semester : {{$examDetails->semester}}</H3>
+  <h5>Full Mark: {{$examDetails->fm}}</h5>
+  <h5>Pass Mark: {{$examDetails->pm}}</h5>
+  <h5>Exam Date: {{$examDetails->date}}</h5>
+
   <hr>
   <br>
 </div>
@@ -56,4 +56,5 @@
 </div>
            
 		
-  </body
+  </body>
+</html>

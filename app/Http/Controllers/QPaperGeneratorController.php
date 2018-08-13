@@ -37,7 +37,8 @@ class QPaperGeneratorController extends Controller
     /**
      * return add form page
      */
-    public function add() {
+    public function add(Request $request) {
+        $request->user()->authorizeRoles(['admin','faculty']);
         return view('papers.add');
     }
 
@@ -46,6 +47,7 @@ class QPaperGeneratorController extends Controller
      * view question by exam_id
      * these are generated question in papers
      * list of only one subject
+     * papers/view?id=2&sid=1
      */
     public function view(Request $request) {
         $subjects =  DB::raw("(SELECT id,name FROM subjects) as s");
@@ -62,6 +64,7 @@ class QPaperGeneratorController extends Controller
     
     /**
      * add question to papers
+     * papers/generate
      */
     public function generateQuestions(GeneratorRequest $request) {
         //assign variables
@@ -72,6 +75,15 @@ class QPaperGeneratorController extends Controller
         $data = $this->question->select(DB::raw("SUM(mark) as total, id"))
         ->where([['diff_level','=',$request->diff_level], ['subject_id','=', $request->subject_id]])
         ->inRandomOrder()->limit($request->noOfQuestions)->groupby('id', 'mark')->get();
+
+        if($data->count() < 1) {
+            $notification = array(
+                'message' => 'There is no questions added in related subject. Please! Go to Subjects and add questions to subject!',
+                'alert-class' => 'alert-warning'
+            );
+         
+            return Redirect::to('papers')->with($notification);
+        }
 
         //totalMarks = question_mark * no_of_question or addition of all question marks
         //get total existing marks already assigned and stored in database : papers
@@ -119,15 +131,18 @@ class QPaperGeneratorController extends Controller
     /**
      * export to pdf
      */
-    public function exportToPdf(Request $request, $exam_id, $subject_id) {
-        $semester = $request->semester;
+    public function exportToPdf(Request $request, $exam_id, $subject_id, $sem) {
+        $semester = $sem;
      
         $sub = $this->subject->select("name","code")->find($subject_id);
         $subject = $sub->name;
         $course_code = $sub->code;
        
-        $examDetails = $this->exam->find($exam_id);
-        
+        $examDetails = $this->exam
+        ->leftJoin('exams_types as t', 't.id', '=', 'exams.exam_type_id')
+        ->select('t.name as exam_type', 'fm', 'pm', 'semester', 'date')
+        ->find($exam_id);
+   
         $q = $this->paper
         ->select('text','mark')
         ->leftJoin('exams as e','e.id','=','papers.exam_id')
@@ -146,7 +161,8 @@ class QPaperGeneratorController extends Controller
         }
     }
 
-    public function delete($id){
+    public function delete(Request $request, $id){
+        $request->user()->authorizeRoles(['admin']);
         $data = $this->paper->find($id);
         if($data->delete()){
             $notification = array(

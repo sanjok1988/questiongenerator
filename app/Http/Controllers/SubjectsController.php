@@ -15,15 +15,17 @@ class SubjectsController extends Controller
 
     public function __construct(Subject $subject){
 
+        $this->middleware('auth');
         $this->subject = $subject;
     }
-    public function index() {
+    public function index(Request $request) {
+        $request->user()->authorizeRoles(['admin','faculty']);
         $subjects = $this->subject->orderby('id','DESC')->paginate(10);
         return view("subjects.index")->with(compact('subjects'));
     }
 
-    public function add(){
-        
+    public function add(Request $request){
+        $request->user()->authorizeRoles(['admin','faculty']);
         return view("subjects.add");
     }
 
@@ -77,7 +79,8 @@ class SubjectsController extends Controller
         
     }
 
-    public function delete($id){
+    public function delete(Request $request, $id){
+        $request->user()->authorizeRoles(['admin']);
         $data = $this->subject->find($id);
         if($data->delete()){
             $notification = array(

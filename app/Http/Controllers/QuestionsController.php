@@ -16,17 +16,20 @@ class QuestionsController extends Controller
 
     public function __construct(Question $question, Subject $subject){
 
+        $this->middleware('auth');
         $this->question = $question;
         $this->subject = $subject;
     }
-    public function index(){
+    public function index(Request $request){
+        $request->user()->authorizeRoles(['admin','faculty']);
         $questions = $this->question
         ->leftJoin('subjects as s', 's.id', 'questions.subject_id')
         ->orderby('questions.id','DESC')->paginate(10);
         return view("questions.index")->with(compact('questions'));
     }
 
-    public function add(){
+    public function add(Request $request){
+        $request->user()->authorizeRoles(['admin','faculty']);
         $subjects = $this->subject->get();
         return view("questions.add")->with(compact("subjects"));
     }
@@ -79,7 +82,8 @@ class QuestionsController extends Controller
         
     }
 
-    public function delete($id){
+    public function delete(Request $request, $id){
+        $request->user()->authorizeRoles(['admin','faculty']);
         $data = $this->question->find($id);
         if($data->delete()){
             $notification = array(

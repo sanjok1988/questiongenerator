@@ -22,8 +22,7 @@
                   <th>Difficulty Level</th>
                   <th>Marks</th>
                   <th>Subject</th>
-                  <th>Action</th>
-                
+                  
                 </tr>
                 </thead>
                 <tbody>
@@ -35,9 +34,7 @@
                   <td>{{$data->diff_level}}</td>
                   <td>{{$data->mark}}</td>
                   <td>{{$data->name}}</td>
-                  <td>
-				<a title="Delete" class="btn btn-danger btn-sm" href="delete/<?php echo $data->id;?>"><i class="fa fa-trash-o"></i></a>
-               </td>
+           
                   
                 </tr>
                 

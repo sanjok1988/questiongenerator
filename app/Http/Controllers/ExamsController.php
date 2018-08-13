@@ -17,18 +17,21 @@ class ExamsController extends Controller
 
     public function __construct(Exam $exam, Subject $subject, ExamType $exam_type){
 
+        $this->middleware('auth');
         $this->exam = $exam;
         $this->subject = $subject;
         $this->exam_type = $exam_type;
     }
-    public function index(){
+    public function index(Request $request){
+        $request->user()->authorizeRoles('admin');
         $exams = $this->exam
         ->leftJoin('exams_types as t', 't.id', '=', 'exams.exam_type_id')
         ->orderby('exams.id','DESC')->paginate(10);
         return view("exams.index")->with(compact('exams'));
     }
 
-    public function add(){
+    public function add(Request $request){
+        $request->user()->authorizeRoles('admin');
         try{
             $subjects = $this->subject->get();
             $exam_types = $this->exam_type->get();
@@ -96,7 +99,8 @@ class ExamsController extends Controller
         
     }
 
-    public function delete($id){
+    public function delete(Request $request, $id){
+        $request->user()->authorizeRoles(['admin']);
         $data = $this->exam->find($id);
         if($data->delete()){
             $notification = array(

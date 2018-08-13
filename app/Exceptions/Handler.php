@@ -48,6 +48,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+
+        $response = parent::render($request, $exception);
+
+        if (method_exists($exception, "getStatusCode")) {
+            if ($exception->getStatusCode() == 401) {
+                $notification = array(
+                    'message' => 'Permission Denied! You do not have enough permission to access. Contact Administrator', 
+                    'alert-class' => 'alert-danger'
+                ); 
+                return redirect()->back()->with($notification);
+                //$response->setContent($exception->getMessage());
+                
+            }
+        }
+
+        return $response;
+      
     }
 }
